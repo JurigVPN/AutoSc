@@ -1,5 +1,5 @@
 <p align="center">
-<img src="https://readme-typing-svg.herokuapp.com?color=%2336BCF7&center=true&vCenter=true&lines=SCRIPT+XRAY+MANTAP" />
+<img src="https://readme-typing-svg.herokuapp.com?color=%2336BCF7&center=true&vCenter=true&lines=AutoScript" />
 </p>
 
 # XRAY
@@ -62,18 +62,22 @@
 <img src="https://readme-typing-svg.herokuapp.com?color=%2336BCF7&center=true&vCenter=true&lines=update-grub+&&+reboot" />
 <img src="https://readme-typing-svg.herokuapp.com?color=%2336BCF7&center=true&vCenter=true&lines=reboot" />
 </p>
+  
 ```
 apt-get update && apt-get upgrade -y && update-grub && sleep 2 && reboot
 ```
+  
 - Otomatis Akan Reboot/ Hidupkan Ulang
 3. Login Lagi Ke VPS NYA
 4. Masukan Nama Domain Kamu, domain harus aktif
 5. Salin kode di bawah ini dan paste kan ke dalam vps punya kamu
 - maka proses install akan berjalan, jangan keluar dari vps
 - jika keluar dari vps saat lagi proses install,maka akan gagal
+  
 ```
 wget https://raw.githubusercontent.com/JurigVPN/AutoSc/master/install.sh && chmod +x install.sh && ./install.sh
 ```
+  
 6. jika sudah selesai,lalu ketik menu untuk menampilkan menu
 <p align="center">
 <img src="https://readme-typing-svg.herokuapp.com?color=%2336BCF7&center=true&vCenter=true&lines=xmenu" />
