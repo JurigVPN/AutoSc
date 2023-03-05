@@ -95,8 +95,8 @@ apt install nginx -y
 rm /etc/nginx/conf.d/*.conf
 rm /etc/nginx/nginx.conf
 cd /etc/nginx
-curl https://raw.githubusercontent.com/JurigVPN/AutoSC/main/kancil.conf > /etc/nginx/nginx.conf
-curl https://raw.githubusercontent.com/JurigVPN/AutoSC/main/nginx.conf > /etc/nginx/conf.d/kancil.conf
+curl https://raw.githubusercontent.com/JurigVPN/AutoSC/master/kancil.conf > /etc/nginx/nginx.conf
+curl https://raw.githubusercontent.com/JurigVPN/AutoSC/master/nginx.conf > /etc/nginx/conf.d/kancil.conf
 sed -i "s/lawakdek/$domain/g" /etc/nginx/conf.d/kancil.conf
 cd
 sysemctl restart nginx
