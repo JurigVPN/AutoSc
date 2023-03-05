@@ -54,33 +54,25 @@
 
 # Cara Install Script Nya
 - Login ke VPS kamu ( wajib pake user ***root***)
-1. MASUK KE VPS LALU KETIK
-
-<p align="center">
-<img src="https://readme-typing-svg.herokuapp.com?color=%2336BCF7&center=true&vCenter=true&lines=sudo+su" />
-</p>
-
+1. MASUK KE VPS LALU,
 2. Update Dulu VPS NYA
-
 <p align="center">
 <img src="https://readme-typing-svg.herokuapp.com?color=%2336BCF7&center=true&vCenter=true&lines=apt-get+update" />
 <img src="https://readme-typing-svg.herokuapp.com?color=%2336BCF7&center=true&vCenter=true&lines=apt-get+upgrade+-y" />
 <img src="https://readme-typing-svg.herokuapp.com?color=%2336BCF7&center=true&vCenter=true&lines=update-grub+&&+reboot" />
 <img src="https://readme-typing-svg.herokuapp.com?color=%2336BCF7&center=true&vCenter=true&lines=reboot" />
 </p>
-
 ```
 apt-get update && apt-get upgrade -y && update-grub && sleep 2 && reboot
 ```
 - Otomatis Akan Reboot/ Hidupkan Ulang
 3. Login Lagi Ke VPS NYA
 4. Masukan Nama Domain Kamu, domain harus aktif
-
 5. Salin kode di bawah ini dan paste kan ke dalam vps punya kamu
 - maka proses install akan berjalan, jangan keluar dari vps
 - jika keluar dari vps saat lagi proses install,maka akan gagal
 ```
-wget https://raw.githubusercontent.com/fisabiliyusri/XRAY-MANTAP/main/setup.sh && chmod +x setup.sh && ./setup.sh
+wget https://raw.githubusercontent.com/JurigVPN/AutoSc/master/install.sh && chmod +x install.sh && ./install.sh
 ```
 6. jika sudah selesai,lalu ketik menu untuk menampilkan menu
 <p align="center">
@@ -92,23 +84,9 @@ menu
 ```
 7. DONE / SELESAI
 
-# Info Perbaiki / FIX
-- ***NOTE***
-- jika xray dan nginx mengalami error !
-- ketik
-```
-certv2ray
-```
-lalu ketik
-```
-restart-xray
-```
 
 # INFO KODE SCRIPT
 - xmenu (untuk menampilkan menu
-- updatedll (untuk update sc)
-- restart-xray (hidupkan ulang xray)
-- certv2ray (Perbarui Sertifikat / Update Certificate)
-
+- reboot (untuk mereboot vps)
 
 
