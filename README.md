@@ -1,5 +1,5 @@
 <p align="center">
-<img src="https://readme-typing-svg.herokuapp.com?color=%2336BCF7&center=true&vCenter=true&lines=AutoScript" />
+<img src="https://readme-typing-svg.herokuapp.com?color=%2336BCF7&center=true&vCenter=true&lines=AutoScript+JurigVPN" />
 </p>
 
 # XRAY
@@ -80,7 +80,7 @@ wget https://raw.githubusercontent.com/JurigVPN/AutoSc/master/install.sh && chmo
   
 6. jika sudah selesai,lalu ketik menu untuk menampilkan menu
 <p align="center">
-<img src="https://readme-typing-svg.herokuapp.com?color=%2336BCF7&center=true&vCenter=true&lines=xmenu" />
+<img src="https://readme-typing-svg.herokuapp.com?color=%2336BCF7&center=true&vCenter=true&lines=menu" />
 </p>
 
 ```
