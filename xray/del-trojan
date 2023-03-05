@@ -1,0 +1,51 @@
+#!/bin/bash
+run_input() {
+read -p "Input Username : " user
+}
+
+run_user() {
+akun=$(cat /etc/xray/trojan-ws.json | grep "####" | cut -d " " -f 2 | grep $user)
+if [ $akun = $user ]; then
+echo > /dev/null
+else
+echo -e "Username yang anda masukan salah"
+echo -e "Mohon di teliti lagi username trojan nya"
+exit
+fi
+}
+
+run_write() {
+exp=$(cat /etc/xray/trojan-ws.json | grep "####" | grep $user | cut -d " " -f 3)        
+sed -i "/^#### $user $exp/,/^},{/d" /etc/xray/trojan*        
+rm /etc/funny/trojan/$user
+rm /etc/funny/limit/trojan/quota/$user
+rm /etc/funny/limit/trojan/ip/$user
+rm /etc/funny/cache/trojan-ws/$user
+rm /etc/funny/cache/trojan-grpc/$user
+rm /etc/funny/cache/trojan-tcp/$user        
+}
+
+run_service() {
+systemctl restart trojan-ws
+systemctl restart trojan-grpc
+}
+
+run_output() {
+domain=$(cat /etc/xray/domain)
+clear
+echo -e "══════════════════════════"  
+echo -e "      =[ Trojan ]= "
+echo -e "══════════════════════════"  
+echo -e ""
+echo -e "User   : $user"
+echo -e "Domain : $domain"
+echo -e ""
+echo -e "User Berhasil di hapus"
+echo -e "══════════════════════════"
+}
+
+run_input
+run_user
+run_write
+run_service
+run_output

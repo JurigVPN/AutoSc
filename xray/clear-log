@@ -1,0 +1,13 @@
+#!/bin/bash
+#clear xray
+echo -n > /var/log/xray/trojan.log
+echo -n > /var/log/xray/vless.log
+echo -n > /var/log/xray/vmess.log
+echo -n > /var/log/xray/error.log
+echo -n > /var/log/xray/access.log
+echo -n > /var/log/daemon.log
+echo -n > /var/log/syslog
+#clear ram
+sync; echo 3 > /proc/sys/vm/drop_caches
+clear
+echo "sukses"

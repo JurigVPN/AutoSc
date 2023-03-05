@@ -1,0 +1,11 @@
+#!/bin/bash
+echo -e "════════════════════════════════════════" | lolcat
+echo -e "     ═══[$(cat /etc/xray/domain)]═══"
+echo -e "════════════════════════════════════════" | lolcat
+echo -e ""
+echo -e " TROJAN "
+echo -e ""
+echo -e "$(cat /etc/funny/log/trojan/trojan.log)"
+echo -e ""
+echo -e "════════════════════════════════════════" | lolcat
+echo -e "Noted : Banned = akun mati 15 menit"

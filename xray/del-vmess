@@ -1,0 +1,54 @@
+#!/bin/bash
+run_input() {
+read -p "Input Username : " user
+}
+
+run_user() {
+akun=$(cat /etc/xray/vmess-ws.json | grep "####" | cut -d " " -f 2 | grep $user)
+if [ $akun = $user ]; then
+echo > /dev/null
+else
+echo -e "Username yang anda masukan salah"
+echo -e "Mohon di teliti lagi username vmess nya"
+exit
+fi
+}
+
+run_write() {
+exp=$(cat /etc/xray/vmess-ws.json | grep "####" | grep $user | cut -d " " -f 3)        
+sed -i "/^#### $user $exp/,/^},{/d" /etc/xray/vmess*        
+rm /etc/funny/vmess/$user
+rm /etc/funny/limit/vmess/quota/$user
+rm /etc/funny/limit/vmess/ip/$user
+rm /etc/funny/cache/vmess-ws/$user
+rm /etc/funny/cache/vmess-grpc/$user
+rm /etc/funny/cache/vmess-ws-orbit/$user                
+rm /etc/funny/cache/vmess-ws-orbit1/$user                
+}
+
+run_service() {
+systemctl restart vmess-ws-orbit
+systemctl restart vmess-ws-orbit1
+systemctl restart vmess-ws
+systemctl restart vmess-grpc
+}
+
+run_output() {
+domain=$(cat /etc/xray/domain)
+clear
+echo -e "══════════════════════════"  
+echo -e "      =[ Vmess ]= "
+echo -e "══════════════════════════"  
+echo -e ""
+echo -e "User   : $user"
+echo -e "Domain : $domain"
+echo -e ""
+echo -e "User Berhasil di hapus"
+echo -e "══════════════════════════"
+}
+
+run_input
+run_user
+run_write
+run_service
+run_output

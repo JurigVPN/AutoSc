@@ -1,0 +1,14 @@
+#!/bin/bash
+clear
+echo start
+domain=$(cat /etc/xray/domain)
+systemctl stop ntls
+cd /root/
+clear
+echo "starting...., Port 80 Akan di Hentikan Saat Proses install Cert"
+certbot certonly --standalone --preferred-challenges http --agree-tos --email uut.mu.ak@gmail.com -d $domain 
+cp /etc/letsencrypt/live/$domain/fullchain.pem /etc/xray/xray.crt
+cp /etc/letsencrypt/live/$domain/privkey.pem /etc/xray/xray.key
+chmod 644 /etc/xray/xray.key
+chmod 644 /etc/xray/xray.crt
+systemctl start ntls

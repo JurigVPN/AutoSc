@@ -1,0 +1,23 @@
+#!/bin/bash
+data=( `ls /etc/funny/limit/vless/quota`);
+for user in "${data[@]}"
+do
+vlimit=$(cat /etc/funny/limit/vless/quota/$user)
+vasli=$(cat /etc/funny/vless/$user)
+if [[ $vasli -gt $vlimit ]]; then
+sed -i "/$user/d" /etc/xray/vless*
+rm /etc/funny/vless/$user
+rm /etc/funny/cache/*/$user
+rm /etc/funny/limit/vless/quota/$user
+nais=3
+else
+echo > /dev/null
+fi
+sleep 0.1
+done
+if [[ $nais -gt 1 ]]; then
+systemctl restart vless-ws
+systemctl restart vless-grpc
+else
+echo > /dev/null
+fi

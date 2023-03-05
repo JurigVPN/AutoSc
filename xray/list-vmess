@@ -1,0 +1,50 @@
+#!/bin/bash
+clear
+echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo -e "     =[ Member Vmess Pertamax ]=         "
+echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+#echo -n > /var/log/xray/vmess.log
+#data=Ayangku
+data=( `cat /etc/xray/vmess-ws.json | grep '####' | cut -d ' ' -f 2 | sort`);
+for user in "${data[@]}"
+do
+cekquota=$(ls /etc/funny/limit/vmess/quota | grep -w $user | wc -l)
+if [[ $cekquota -gt 0 ]]; then
+lquota=$(printf "%.0f" `echo $(cat /etc/funny/limit/vmess/quota/$user)/1024/1024/1024 |bc -l`)        
+else
+lquota=Unlimited
+fi
+cekfile=$(ls /etc/funny/vmess | grep -w $user | wc -l)
+if [[ $cekfile -gt 0 ]]; then
+quota=$(printf "%.3f" `echo $(cat /etc/funny/vmess/$user)/1024/1024/1024 |bc -l`)
+else
+quota=0
+fi
+echo > /dev/null
+jum=$(cat /etc/xray/vmess-ws.json | grep '####' | wc -l)
+if [[ $jum -gt 0 ]]; then
+exp=$(cat /etc/xray/vmess-ws.json | grep '####' | grep -w $user | cut -d ' ' -f 3)
+#quota=$(printf "%.3f" `echo $(cat /etc/funny/vmess/$user)/1024/1024/1024 |bc -l`)
+echo -e "\e[33;1mUser\e[32;1m  : $user"
+echo -e "\e[33;1mQuota\e[32;1m : $quota GB"
+echo -e "\e[33;1mLimit\e[32;1m : $lquota GB"
+echo -e "\e[33;1mExp\e[32;1m   : $exp"
+echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo "slot" >> /root/system
+else
+echo > /dev/null
+fi
+sleep 0.1
+done
+mia1=$(ls /etc/funny/vmess | wc -l)                  
+aktif=$(cat /root/system | wc -l)
+if [[ $mia1 -gt 0 ]]; then            
+ota=$(printf "%.3f" `echo $(cat /etc/funny/vmess/* | gawk '{ ehh+=$1} END {print ehh}')/1024/1024/1024 |bc -l`)
+else
+ota=0
+fi                    
+echo -e "Total Quota : $ota GB"
+echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"        
+echo -e "$aktif Member Active"
+echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+sed -i "d" /root/system

@@ -1,0 +1,37 @@
+#!/bin/bash
+echo -e "\e[32m════════════════════════════════════════" | lolcat
+echo -e "             ═══[Trojan]═══"
+echo -e "\e[32m════════════════════════════════════════" | lolcat
+echo -e ""
+echo -e " Menu Control Trojan GFW/TCP"
+echo -e ""
+echo -e "yes = Trojan GFW akan Langsunh aktif saat melkukan pembuatan akun trojan"
+echo -e "tetapi mempunyai dampak ... service SSH WS SSL & SSH SSL akan Reconect"
+echo -e ""
+echo -e "no = Trojan GFW Akan aktif secara otomatis di jam 00.00"
+echo -e "sangat saya rekomendasikan ... karna trojan gfw sekrang sudah punah.. hehe"
+echo -e ""
+echo -e "Noted = menu ini hanya akan ada pada Trojan Gfw Saja yha gaes"
+echo -e "Karna nanti saat pembuatan akun trojan anda akan mendapatkan 3 plugin "
+echo -e "yaitu Trojan GFW, Trojan Ws, Trojan Grpc"
+echo -e ""
+echo -e ""
+echo -e "silahkan masukan piliha anda ( yes / no ) "
+echo -e ""
+read -p "Switch Trojan GFW : " ngab
+case $ngab in
+yes)
+echo -e "yes" > /root/.trojan
+clear
+echo -e "Terimakasih Trojan GFW akan langsung aktif"
+;;
+no)
+echo -e "no" > /root/.trojan
+echo -e "Terimakasih Trojan GFW akan aktif pada jam 00.00"
+;;
+*)
+echo -e "Masukan pilihan yang benar !!"
+clear
+switch-trojan
+;;
+esac

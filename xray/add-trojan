@@ -1,0 +1,99 @@
+#!/bin/bash
+domain=$(cat /etc/xray/domain)
+uuid=$(uuid)
+#MASUKAN
+run_masukan() {
+read -p "Username         : " user
+read -p "Quota (GB)       : " quota
+read -p "Max Ip login     : " iplimit
+read -p "Masaaktif        : " masaaktif
+}
+
+#QUOTA
+run_quota() {
+if [[ $quota -gt 0 ]]; then
+echo -e "$[$quota * 1024 * 1024 * 1024]" > /etc/funny/limit/trojan/quota/$user
+else
+echo > /dev/null
+fi
+}
+
+#IPLIMIT
+run_iplimit() {
+if [[ $iplimit -gt 0 ]]; then
+echo -e "$iplimit" > /etc/funny/limit/trojan/ip/$user
+else
+echo > /dev/null
+fi
+}
+
+#CEK_USER        
+run_cek_user() {        
+akun=$(cat /etc/xray/trojan-grpc.json | grep $user -o | uniq | wc -l)
+if [ $akun = 0 ]; then
+clear
+echo > /dev/null
+else
+clear
+echo -e "user telah digunakan"
+echo -e "silahkan gunakan nama user lain"
+exit
+fi
+}
+
+#WRITE_JSON
+run_write_json() {            
+now=`date -d "0 days" +"%Y-%m-%d"`
+exp=`date -d "$masaaktif days" +"%Y-%m-%d"`
+sed -i '/#xray$/a\#### '"$user $exp"'\
+},{"password": "'""$uuid""'","email": "'""$user$sec""'"' /etc/xray/trojan*
+gfw="trojan://${uuid}@${domain}:443"             
+ws="trojan://${uuid}@${domain}:443?path=/trojanws&security=tls&host=${domain}&type=ws&sni=isi-bugmu-ngab#${user}"
+grpc="trojan://${uuid}@${domain}:443?mode=gun&security=tls&type=grpc&serviceName=trojan-grpc&sni=isi-bugmu-ngab#${user}"                
+#sleep 15 && systemctl restart trojan-tcp &
+sleep 5 && systemctl restart trojan-ws &
+sleep 5 && systemctl restart trojan-grpc &                
+clear
+}
+           
+           
+#OUTPUT_AKUN
+run_output_akun() {                 
+echo -e "══════════════════════════"                 
+echo -e "    <=  TROJAN PERTAMAX =>"       
+echo -e "══════════════════════════"                 
+echo -e ""
+echo -e "Username     : $user"
+echo -e "CITY         : $(cat /root/.mycity)"
+echo -e "ISP          : $(cat /root/.myisp)"
+echo -e "Host/IP      : $domain"
+echo -e "Port         : 443"
+echo -e "Key          : $uuid"
+echo -e "Network      : gfw, ws, grpc"
+echo -e "Path         : /trojanws"
+echo -e "serviceName  : trojan-grpc"               
+echo -e ""  
+echo -e "══════════════════════════"                 
+echo -e "Link Gfw  => ${gfw}"
+echo -e "══════════════════════════"                 
+echo -e "Link Ws   => ${ws}"
+echo -e "══════════════════════════"                 
+echo -e "Link Grpc => ${grpc}"
+echo -e "══════════════════════════"                 
+echo -e "     Expired => $exp"
+echo -e "══════════════════════════"                 
+echo -e "Noted : Untuk Trojan GFW Aktif di jam 00"
+} 
+
+run_tele() {
+telegram-send --pre "$(run_output_akun)"                        
+}   
+            
+#execute    
+run_masukan
+run_cek_user
+run_quota
+run_iplimit
+run_write_json   
+run_output_akun
+run_tele > /dev/null &            

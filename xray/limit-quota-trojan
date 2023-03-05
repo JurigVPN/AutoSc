@@ -1,0 +1,23 @@
+#!/bin/bash
+data=( `ls /etc/funny/limit/trojan/quota`);
+for user in "${data[@]}"
+do
+vlimit=$(cat /etc/funny/limit/trojan/quota/$user)
+vasli=$(cat /etc/funny/trojan/$user)
+if [[ $vasli -gt $vlimit ]]; then
+sed -i "/$user/d" /etc/xray/trojan*
+rm /etc/funny/trojan/$user
+rm /etc/funny/cache/*/$user
+rm /etc/funny/limit/trojan/quota/$user
+nais=3
+else
+echo > /dev/null
+fi
+sleep 0.1
+done
+if [[ $nais -gt 1 ]]; then
+systemctl restart trojan-ws
+systemctl restart trojan-grpc
+else
+echo > /dev/null
+fi

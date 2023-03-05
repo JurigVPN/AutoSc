@@ -1,0 +1,23 @@
+#!/bin/bash
+user="$1"
+login="$2"
+max="$3"
+total="$4"
+run_var() {
+lokasi=/etc/xray/vmess-ws.json
+lama=$(cat $lokasi | grep -w $user | sed -n 2p)
+baru=$(echo -e "#@#$lama")
+}
+
+run_mesin() {
+sed -i "s/${lama}/${baru}/g" /etc/xray/vmess*
+}
+
+run_log() {
+waktu=$(date)
+echo -e "$waktu\nBanned User: $user Login: $login IP Max: $max IP \n$total \n" >> /etc/funny/log/vmess/vmess.log
+}
+
+run_var
+run_mesin
+run_log
