@@ -6,10 +6,10 @@ version='1.2'
 ipip=$(curl ipinfo.io/ip)
 clear
 echo ""
-echo -e "Scrit By Procopas"
+echo -e "Scrit By JurigVPN"
 echo -e "Semoga Lancar Selalu"
 echo -e ""
-echo -e "Telegram : https://t.me/Procopas"
+echo -e "Telegram : https://t.me/JurigVPN"
 echo -e ""
 read -p "Pres enter to next : " kwowk
 clear
@@ -17,7 +17,7 @@ clear
 run_input() {
 clear
 version="1.2"
-read -p "Input Domain : " domain
+read -p "Masukan Domain : " domain
 }
 
 run_update() {
@@ -95,8 +95,8 @@ apt install nginx -y
 rm /etc/nginx/conf.d/*.conf
 rm /etc/nginx/nginx.conf
 cd /etc/nginx
-curl https://raw.githubusercontent.com/ProcopasTV/ProcopasV1-AutoSC/main/kancil.conf > /etc/nginx/nginx.conf
-curl https://raw.githubusercontent.com/ProcopasTV/ProcopasV1-AutoSC/main/nginx.conf > /etc/nginx/conf.d/kancil.conf
+curl https://raw.githubusercontent.com/JurigVPN/AutoSC/main/kancil.conf > /etc/nginx/nginx.conf
+curl https://raw.githubusercontent.com/JurigVPN/AutoSC/main/nginx.conf > /etc/nginx/conf.d/kancil.conf
 sed -i "s/lawakdek/$domain/g" /etc/nginx/conf.d/kancil.conf
 cd
 sysemctl restart nginx
@@ -1486,13 +1486,14 @@ rm /var/log/xray/*
 xp
 echo -e "Intsall Berhasil dan lancar"
 echo -e ""
-echo -e "     <= Wajib di baca & lakukan =>"
+echo -e " <= Wajib di baca & lakukan =>"
 echo -e "Port login VPS dari 22 di ganti ke 3303"
-echo -e "karna kalo login vps make port 22 gampang kena brute force"
+echo -e "Karna kalo login vps make port 22 gampang kena brute force"
 echo -e ""
 echo -e "Untuk membuka panel AutoSC Masukan"
-echo -e "perintah ( Menu ) tanpa tanda kurung"
+echo -e "Perintah ( Menu ) tanpa tanda kurung"
 echo -e ""
+echo -e "AutoScript By @JurigVPN"
 read -p "Pres enter untuk reboot : " ieieie
 reboot
 }
